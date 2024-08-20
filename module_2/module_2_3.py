@@ -3,7 +3,7 @@ count = 0
 
 i = len(my_list)
 
-while True:
+while count <= i:
     if my_list[count] > 0:
         print(my_list[count])
         count += 1
