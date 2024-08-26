@@ -1,7 +1,6 @@
 
 
 def send_email(message, recipient, sender="university.help@gmail.com"):
-
     domens = (".com", ".ru", ".net")
     if ("@" not in recipient or "@" not in sender or recipient.endswith(domens) is False
             or sender.endswith(domens) is False):
