@@ -1,5 +1,3 @@
-
-
 def print_params(a=1, b="strings", c=True):
     print(a, b, c)
 
