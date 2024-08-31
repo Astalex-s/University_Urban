@@ -14,5 +14,5 @@ print_params(*values_list)
 print_params(**values_dict)
 
 
-values_list_2 = [3.3, False]
+values_list_2 = [54.32, False]
 print_params(*values_list_2, 42)
