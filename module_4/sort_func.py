@@ -1,4 +1,3 @@
-nums = [3, 1, 2, 5, 4, 6, 10, 7, 9, 8]
 
 
 # Пузырьковая сортировка:
@@ -23,9 +22,8 @@ def selection_sort(lst):
         lst[i], lst[lowest] = lst[lowest], lst[i]
     return lst
 
+
 # Перебор вставкой
-
-
 def insertion_sort(lst):
     for i in range(1, len(lst)):
         key = i
