@@ -5,6 +5,23 @@ class Animal:     # класс животных
     def __init__(self, name):
         self.name = name  # индивидуальное название каждого животного
 
+    """
+    Метод eat должен работать следующим образом:
+    Если переданное растение (food) съедобное - выводит на экран "<self.name> съел <food.name>", меняется атрибут
+    fed на True.
+    Если переданное растение (food) не съедобное - выводит на экран "<self.name> не стал есть <food.name>",
+    меняется атрибут alive на False.
+    Т.е если животному дать съедобное растение, то животное насытится, если не съедобное - погибнет.
+    """
+
+    def eat(self, food):
+        if food.edible is True:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True  # переопределение атрибута при наследовании
+        else:
+            print(f'{self.name} не стал есть {food.name}')
+            self.alive = False  # переопределение атрибута при наследовании
+
 
 class Plant:        # класс растений
     edible = False  # съедобность
@@ -14,32 +31,11 @@ class Plant:        # класс растений
 
 
 class Mammal(Animal):  # Млекопитающие
-
-    def eat(self, food):  # food - это параметр, принимающий объекты классов растений
-        if food.edible is True:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
+    pass
 
 
 class Predator(Animal):  # Хищник
-    """
-    Метод eat должен работать следующим образом:
-    Если переданное растение (food) съедобное - выводит на экран "<self.name> съел <food.name>", меняется атрибут
-    fed на True.
-    Если переданное растение (food) не съедобное - выводит на экран "<self.name> не стал есть <food.name>",
-    меняется атрибут alive на False.
-    Т.е если животному дать съедобное растение, то животное насытится, если не съедобное - погибнет.
-    """
-    def eat(self, food):
-        if food.edible is True:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True     # переопределение атрибута при наследовании
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False  # переопределение атрибута при наследовании
+    pass
 
 
 class Flower(Plant):  # класс цветов
