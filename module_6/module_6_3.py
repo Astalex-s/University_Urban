@@ -30,7 +30,6 @@ class Eagle:
     def __init__(self):
         self.y_distance = 0
         self.sound = 'I train, eat, sleep, and repeat'
-        super().__init__()
 
     def fly(self, dy):
         self.y_distance += dy
@@ -48,6 +47,9 @@ voice - который печатает значение унаследован�
 
 
 class Pegasus(Horse, Eagle):
+    def __init__(self):
+        super().__init__()
+
     def move(self, dx, dy):
         super().run(dx)
         super().fly(dy)
