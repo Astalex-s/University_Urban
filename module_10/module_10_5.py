@@ -1,26 +1,33 @@
-import time
-from threading import Thread, Event
+import datetime
+from multiprocessing import Pool
 
 
-def first_worker():
-    print('Первый рабочиц приступил к своей задаче')
-    event.wait(timeout=5)  # Будем ожидать, пока событие не произойдёт. Для этого мы вызываем метод «wait(5 секунд)»
-    print('Первый рабочий продолжил выполнение задачи')
-    time.sleep(5)
-    print('Первый рабочий закончил выполнять свою задачу')
+def read_info(name):
+    all_data = []
+    with open(name, 'r', encoding='utf-8') as file:
+        while True:
+            line = file.readline()
+            if not line:
+                break
+            else:
+                all_data.append(line)
 
 
-def second_worker():
-    print('Второй рабочий приступил к своей задаче')
-    time.sleep(10)
-    print('Второй рабочий закончил выполнение своей задачи')
-    event.set()  # Когда нам необходимо поменять флаг, мы вызываем метод «set()»
+filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
+# Высчитываем время затраченное на при линейном вызове функции read_info():
 
-event = Event()
-thread1 = Thread(target=first_worker)
-thread2 = Thread(target=second_worker)
-thread1.start()
-thread2.start()
+# start_time = datetime.datetime.now()
+# for filename in filenames:
+#     read_info(filename)
+# end_time = datetime.datetime.now()
+# print(f'{end_time - start_time} (линейный)')
 
-# print(event.is_set()) - Проверить состояние этого флага мы можем, вызвав метод «is_set()»
+# Высчитываем время затраченное на при многопроцессорном вызове функции read_info():
+
+if __name__ == '__main__':
+    start_time = datetime.datetime.now()
+    with Pool() as pool:
+        result = pool.map(read_info, filenames)
+    end_time = datetime.datetime.now()
+    print(f'{end_time - start_time} (многопроцессный)')
