@@ -24,3 +24,4 @@ async def get_admin_page() -> str:
 @app.get("/user/{user_id}")
 async def get_user_number(user_id: int):
     return f"Вы вошли как пользователь № {user_id}"
+
