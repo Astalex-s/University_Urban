@@ -31,5 +31,5 @@ def get_all_products():
     return cursor.fetchall()
 
 
-if __name__ == "__main__":
-    initiate_db()
+# if __name__ == "__main__":
+#     initiate_db()

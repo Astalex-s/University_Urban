@@ -5,7 +5,6 @@ from module_13.module_13_2 import api_key
 from crud_functions import get_all_products
 from keybords import *
 
-products = get_all_products()
 
 api = api_key.api_key
 bot = Bot(token=api)
@@ -37,6 +36,7 @@ async def get_formulas(call):
 
 @dp.message_handler(text='Купить')
 async def get_buying_list(message):
+    products = get_all_products()
     for product in products:
         id, title, description, price = product
         await message.answer(f'Название: {title} | Описание: {description} | Цена: {price}')
